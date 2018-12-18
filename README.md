@@ -2,9 +2,9 @@
 Réalisation d'un puissance 4 en tp d'APO à Poytech Lyon
 
 # Membres du projet :
-⋅⋅* DELPLANQUE Thibaud
-⋅⋅* BOUQSIMI Akram
-⋅⋅* NAAJI Dorian
+  * DELPLANQUE Thibaud
+  * BOUQSIMI Akram
+  * NAAJI Dorian
 
 # Modalités du projet
 
