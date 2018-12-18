@@ -2,14 +2,14 @@
 Réalisation d'un puissance 4 en tp d'APO à Poytech Lyon
 
 # Membres du projet :
-  * DELPLANQUE Thibaud
+  * DELPLANQUE Thibaut
   * BOUQSIMI Akram
   * NAAJI Dorian
 
 # Modalités du projet
 
 ## Réalisation d'un rapport
-*Rapport détaillant la méthjodologie de travail, la répartition des tâches et l'évaluation du temps passé par chacun des collaborateurs.*
+*Rapport détaillant la méthodologie de travail, la répartition des tâches et l'évaluation du temps passé par chacun des collaborateurs.*
 
 ## Conception
 *Conception UML*
