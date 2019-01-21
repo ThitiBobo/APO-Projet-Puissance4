@@ -51,8 +51,8 @@ public class Colonne {
 	public Colonne(int taille) {
 		_tailleColonne = taille;
 		_indexCaseVide = 0;
-		for (int i = 0; i < size; i++) {
-			Case[i] = new Case();			
+		for (int i = 0; i < taille; i++) {
+			_colonne[i] = new Case();			
 		}
 	}
 	

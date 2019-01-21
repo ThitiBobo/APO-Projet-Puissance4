@@ -1,10 +1,10 @@
 package com.apo.puissance4;
 
-public class Joueur {
+public class Case {
 
-	public char getSymbole() {
+	public void ajouterJeton(Joueur joueur) {
 		// TODO Auto-generated method stub
-		return 0;
+		
 	}
 
 }
