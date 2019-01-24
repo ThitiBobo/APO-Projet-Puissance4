@@ -40,5 +40,23 @@ public class ManagerJeu {
 	private int _nbPartieRestante;
 	
 	
+	// **********************************************
+	// 					Méthodes
+	// **********************************************
 
+	
+	/**
+	 * 
+	 */
+	public void Jouer() {
+		
+	}
+	
+	/**
+	 * retourne le rendu graphique du jeur sous forme de String
+	 * @return
+	 */
+	public String affichageGrille() {
+		return null;
+	}
 }
