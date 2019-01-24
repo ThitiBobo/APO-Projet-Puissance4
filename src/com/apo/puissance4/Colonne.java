@@ -57,6 +57,7 @@ public class Colonne {
 	 * @param taille la taille de l'instance  
 	 */
 	public Colonne(int taille) {
+            this._colonne = new Case[taille];
 		_tailleColonne = taille;
 		_indexCaseVide = 0;
 		for (int i = 0; i < taille; i++) {

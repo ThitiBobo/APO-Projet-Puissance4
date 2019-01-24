@@ -37,7 +37,7 @@ public class GrilleJeu
     private void initGrille()
     {
         this._grille = new Colonne[this._nbColonnes];
-        for(int i = 0; i < this._nbLignes; i++)
+        for(int i = 0; i < this._nbColonnes; i++)
         {
             this._grille[i] = new Colonne(this._nbLignes);
         }
@@ -103,14 +103,64 @@ public class GrilleJeu
     }
     
     /**
-     * 
-     * @param joueur
-     * @param nbPionsAlignésPourVictoire
-     * @return 
+     * Vérifie si "nbPionsAlignésPourVictoire" sont alignés horizontalement
+     * @param joueur : le joueur pour lequel on effectue la vérification
+     * @param nbPionsAlignésPourVictoire : le nombre de pions alignés nécessaire pour gagner
+     * @return : true (victoire) ou false
      */
     public boolean vérifHorizontale(Joueur joueur, int nbPionsAlignésPourVictoire)
     {
-        return false;
+        // on compte le jeton de départ
+       int nbAlignés = 1;
+       // on incrémente le nombre de jeton alignés par le nombre de jetons se situant sur la droite de ce dernier.
+       nbAlignés += this.vérifDroite(joueur);
+        // on incrémente le nombre de jeton alignés par le nombre de jetons se situant sur la gauche de ce dernier.
+       nbAlignés += this.vérifGauche(joueur);
+       // si le nombre de jetons alignés est égal (ou supérieur mais ce cas ne devrait pas arriver) au nombre de pions devant être alignés pour la victoire
+       if(nbAlignés >= nbPionsAlignésPourVictoire)
+       {
+           // le joueur a gagné
+           return true;
+       }
+       //sinon
+       else
+       {
+           // le joueur n'a pas (encore) gagné
+           return false;
+       }
+    }
+    
+    /**
+     * 
+     * @param joueur
+     * @return le nombre de jeton alignés à droite du dernier jeton placé
+     */
+    public int vérifDroite(Joueur joueur)
+    {
+        // i est un compteur contenant le "décalage à droite" en colonne(s)
+        int i = 1;
+        // le nombre de jetons alignés à droite;
+        int nbAlignés = 0;
+        // si on ne dépasse pas le nombre de lignes maximum dès le début
+        if(this._derniereColJetonPlacé+i < this._nbLignes)
+        {
+            while((this._derniereColJetonPlacé + i < this._nbLignes) && 
+            (this._grille[this._derniereColJetonPlacé+i].getCase(this._derniereLigneJetonPlacé).getJeton().getJoueur() == joueur))
+            {
+                nbAlignés++;
+                i++;
+            }
+            return nbAlignés;
+        }
+        else
+        {
+            return nbAlignés;
+        }
+    }
+    
+    public int vérifGauche(Joueur joueur)
+    {
+        return 0;
     }
     
     /**

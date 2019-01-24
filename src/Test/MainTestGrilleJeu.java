@@ -5,6 +5,13 @@
  */
 package Test;
 
+import com.apo.puissance4.GrilleJeu;
+import com.apo.puissance4.Jeton;
+import com.apo.puissance4.Joueur;
+import com.apo.puissance4.exception.FullColumnException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Dorian : classe de test
@@ -17,6 +24,25 @@ public class MainTestGrilleJeu
      */
     public static void main(String[] args)
     {
-        
+        GrilleJeu grille = new GrilleJeu(7,6);
+        Joueur j1 = new Joueur();
+        Joueur j2 = new Joueur();
+        Jeton jetonJ1 = new Jeton(j1, 'X');
+        try
+        {
+            grille.ajouterJeton(6, jetonJ1);
+            grille.ajouterJeton(5, jetonJ1);
+            grille.ajouterJeton(4, jetonJ1);
+            grille.ajouterJeton(3, jetonJ1);
+
+        } catch (IllegalArgumentException ex)
+        {
+            Logger.getLogger(MainTestGrilleJeu.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (FullColumnException ex)
+        {
+            Logger.getLogger(MainTestGrilleJeu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        int nbAlignés = grille.vérifDroite(j1);
+        System.out.println(nbAlignés);
     }
 }

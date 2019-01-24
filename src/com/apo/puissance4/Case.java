@@ -43,6 +43,13 @@ public class Case {
 		return builder.toString();
 	}
 	
-	
+        /**
+         * getter
+         * @return : le Jeton de la case courante
+         */
+	public Jeton getJeton()
+        {
+            return this._jeton;
+        }
 
 }
