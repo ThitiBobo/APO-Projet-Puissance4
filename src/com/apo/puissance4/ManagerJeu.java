@@ -1,5 +1,5 @@
 package com.apo.puissance4;
 
-public class MangerJeu {
+public class ManagerJeu {
 
 }
