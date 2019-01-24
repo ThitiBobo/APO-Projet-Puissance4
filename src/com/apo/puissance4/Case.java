@@ -10,7 +10,7 @@ public class Case {
 	private Jeton _jeton;
 	
 	/**
-	 * Vérifie si la case ne contient aucune instance de 
+	 * Vï¿½rifie si la case ne contient aucune instance de 
 	 * type @see Jeton, renvoie un boolean
 	 * @return true si la case est vide, sinon false
 	 */
@@ -19,11 +19,11 @@ public class Case {
 	}
 	
 	/**
-	 * Ajoute un jeton dans la case si celle-ci n'est pas déja
-	 * occupée par un autre jeton
-	 * @param le jeton à ajouter
-	 * @throws CaseNotEmptyException si la case est déja occupé
-	 * @throws IllegalArgumentException si le jeton n'est pas instancié
+	 * Ajoute un jeton dans la case si celle-ci n'est pas dï¿½ja
+	 * occupï¿½e par un autre jeton
+	 * @param le jeton Ã  ajouter
+	 * @throws CaseNotEmptyException si la case est dï¿½ja occupï¿½
+	 * @throws IllegalArgumentException si le jeton n'est pas instanciï¿½
 	 */
 	public void ajouterJeton(Jeton jeton) throws CaseNotEmptyException, IllegalArgumentException {
 		if(!isEmpty())
@@ -34,7 +34,7 @@ public class Case {
 	}
 
 	/**
-	 * Réécriture de la méthode toString
+	 * Rï¿½ï¿½criture de la mï¿½thode toString
 	 */
 	@Override
 	public String toString() {

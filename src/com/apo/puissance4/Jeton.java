@@ -24,5 +24,10 @@ public class Jeton {
 		this._symbole = joueur.getSymbole();
 
 	}
+	
+	public Jeton(Joueur joueur, char symbole) {
+		this._joueur = joueur;
+		this._symbole = symbole;
+	}
 
 }
