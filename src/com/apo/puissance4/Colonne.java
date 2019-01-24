@@ -48,7 +48,7 @@ public class Colonne {
 	
 	public Case getCase(int index) {
 		if(index < 0 || index >= _tailleColonne)
-			throw new IllegalArgumentException();
+			throw new IndexOutOfBoundsException();
 		return _colonne[index];
 	}
 	
