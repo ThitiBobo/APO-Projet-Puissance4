@@ -31,18 +31,30 @@ public class MainTestGrilleJeu
         try
         {
             grille.ajouterJeton(3, jetonJ1);
-            grille.ajouterJeton(5, jetonJ1);
+            grille.ajouterJeton(3, jetonJ1);
+            
+            grille.ajouterJeton(2, jetonJ1);
+            grille.ajouterJeton(2, jetonJ1);
+            grille.ajouterJeton(2, jetonJ1);
+            
+            grille.ajouterJeton(1, jetonJ1);
+            grille.ajouterJeton(1, jetonJ1);
+            grille.ajouterJeton(1, jetonJ1);
+            grille.ajouterJeton(1, jetonJ1);
+            
             grille.ajouterJeton(4, jetonJ1);
-            grille.ajouterJeton(6, jetonJ1);
+            
 
-        } catch (IllegalArgumentException ex)
+        } 
+        catch (IllegalArgumentException ex)
         {
             Logger.getLogger(MainTestGrilleJeu.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (FullColumnException ex)
+        } 
+        catch (FullColumnException ex)
         {
             Logger.getLogger(MainTestGrilleJeu.class.getName()).log(Level.SEVERE, null, ex);
         }
-        int nbAlignés = grille.vérifGauche(j1);
-        System.out.println(nbAlignés+1);
+        boolean gagne = grille.vérifVictoire(j1, 4);
+        System.out.println(gagne);
     }
 }

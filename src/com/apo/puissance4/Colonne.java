@@ -46,6 +46,11 @@ public class Colonne {
 		return _indexCaseVide;
 	}
 	
+        /**
+         * Permet de retourner la case à l'index spécifié
+         * @param index : indexe de la case, de 0 à la taille de la colonne
+         * @return : la case à l'index spécifié
+         */
 	public Case getCase(int index) {
 		if(index < 0 || index >= _tailleColonne)
 			throw new IndexOutOfBoundsException();
