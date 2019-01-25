@@ -2,9 +2,13 @@ package com.apo.puissance4.console;
 
 import java.util.Scanner;
 
+import com.apo.puissance4.ManagerJeu;
+
 public class AffichageConsole {
 
 	private static Scanner sc = new Scanner(System.in);
+	
+	private static ManagerJeu jeu;
 	
 	public static void main(String[] args) {
 		
@@ -49,8 +53,16 @@ public class AffichageConsole {
 	}
 
 	private static void partieLocal() {
+		jeu = new ManagerJeu();
 		System.out.print("Saisissez le nombre de joueur : ");
 		String saisie = sc.nextLine();
+		try {
+			jeu.set_nbJoueur(Integer.parseInt(saisie));
+		} catch (Exception e) {
+			quitter();
+		}
+		
+		
 		
 	}
 
