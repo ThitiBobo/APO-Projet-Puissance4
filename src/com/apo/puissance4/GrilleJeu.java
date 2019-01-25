@@ -132,24 +132,42 @@ public class GrilleJeu
     
     /**
      * 
-     * @param joueur
+     * @param joueur : le joueur pour lequel on souhaite faire la vérification sur l'alignement des jetons
      * @return le nombre de jeton alignés à droite du dernier jeton placé
      */
     public int vérifDroite(Joueur joueur)
     {
         // i est un compteur contenant le "décalage à droite" en colonne(s)
         int i = 1;
-        // le nombre de jetons alignés à droite;
+        // le nombre de jetons alignés à droite stocké dans une var
         int nbAlignés = 0;
-        // si on ne dépasse pas le nombre de lignes maximum dès le début
-        if(this._derniereColJetonPlacé+i < this._nbLignes)
+        // un boolean qui indique si on sort du while
+        boolean flag = true;
+        // si on ne va pas en dessous de 0
+        if(this._derniereColJetonPlacé + i <= 6)
         {
-            while((this._derniereColJetonPlacé + i < this._nbLignes) && 
-            (this._grille[this._derniereColJetonPlacé+i].getCase(this._derniereLigneJetonPlacé).getJeton().getJoueur() == joueur))
+            // tant que la colonne du dernier jeton placé + le décalage à droite est supérieur ou égal à 0
+            // et que le flag est positionné sur tue
+            while((this._derniereColJetonPlacé + i <= 6) &&  (flag) )
             {
-                nbAlignés++;
-                i++;
+                // s'il y a bien un jeton sur l'endroit que l'on va checker
+                if(!this._grille[this._derniereColJetonPlacé+i].getCase(this._derniereLigneJetonPlacé).isEmpty())
+                {
+                    // si le jeton appartient bien au joueur donné.
+                    if(this._grille[this._derniereColJetonPlacé+i].getCase(this._derniereLigneJetonPlacé).getJeton().getJoueur() == joueur)
+                    {
+                        // on incrémente notre compteur de jeton alignés
+                        nbAlignés++;
+                        // on incrémente notre variable de décalage à gauche
+                        i++;
+                    }
+                }
+                else
+                {
+                    flag = false;
+                }
             }
+            // on retourne le nombre de jetons alignés à gauche du jeton initial, sans compter ce dernier. (censé retourner au max 3)
             return nbAlignés;
         }
         else
@@ -160,7 +178,43 @@ public class GrilleJeu
     
     public int vérifGauche(Joueur joueur)
     {
-        return 0;
+        // i est un compteur contenant le "décalage à gauche" en colonne(s)
+        int i = 1;
+        // le nombre de jetons alignés à gauche stocké dans une var
+        int nbAlignés = 0;
+        // un boolean qui indique si on sort du while
+        boolean flag = true;
+        // si on ne va pas en dessous de 0
+        if(this._derniereColJetonPlacé-i >= 0)
+        {
+            // tant que la colonne du dernier jeton placé - le décalage à gauche est supérieur ou égal à 0
+            // et que le flag est positionné sur tue
+            while((this._derniereColJetonPlacé - i >= 0) &&  (flag) )
+            {
+                // s'il y a bien un jeton sur l'endroit que l'on va checker
+                if(!this._grille[this._derniereColJetonPlacé-i].getCase(this._derniereLigneJetonPlacé).isEmpty())
+                {
+                    // si le jeton appartient bien au joueur donné.
+                    if(this._grille[this._derniereColJetonPlacé-i].getCase(this._derniereLigneJetonPlacé).getJeton().getJoueur() == joueur)
+                    {
+                        // on incrémente notre compteur de jeton alignés
+                        nbAlignés++;
+                        // on incrémente notre variable de décalage à gauche
+                        i++;
+                    }
+                }
+                else
+                {
+                    flag = false;
+                }
+            }
+            // on retourne le nombre de jetons alignés à gauche du jeton initial, sans compter ce dernier. (censé retourner au max 3)
+            return nbAlignés;
+        }
+        else
+        {
+            return nbAlignés;
+        }
     }
     
     /**

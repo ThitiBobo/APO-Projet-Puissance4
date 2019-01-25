@@ -30,10 +30,10 @@ public class MainTestGrilleJeu
         Jeton jetonJ1 = new Jeton(j1, 'X');
         try
         {
-            grille.ajouterJeton(6, jetonJ1);
+            grille.ajouterJeton(3, jetonJ1);
             grille.ajouterJeton(5, jetonJ1);
             grille.ajouterJeton(4, jetonJ1);
-            grille.ajouterJeton(3, jetonJ1);
+            grille.ajouterJeton(6, jetonJ1);
 
         } catch (IllegalArgumentException ex)
         {
@@ -42,7 +42,7 @@ public class MainTestGrilleJeu
         {
             Logger.getLogger(MainTestGrilleJeu.class.getName()).log(Level.SEVERE, null, ex);
         }
-        int nbAlignés = grille.vérifDroite(j1);
-        System.out.println(nbAlignés);
+        int nbAlignés = grille.vérifGauche(j1);
+        System.out.println(nbAlignés+1);
     }
 }
