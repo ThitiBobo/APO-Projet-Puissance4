@@ -40,6 +40,10 @@ public class GrilleJeu
         this._nbCasesVides = nbCol*nbLignes;
         this.initGrille();
     }
+    
+    public void resetGrille() {
+    	this.initGrille();
+    }
 
     /**
      * Initialise le tableau de colonnes. Méthode appelée par le constructeur.
