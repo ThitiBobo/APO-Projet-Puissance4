@@ -97,8 +97,9 @@ public class GrilleJeu
     }
     
     public char getSymbole(int colonne, int ligne) {
-    	if(_grille[colonne].getCase(ligne).getJeton() != null)
-    		return _grille[colonne].getCase(ligne).getJeton().getSymbole();
+    	Case caseSelect = _grille[colonne].getCase(ligne);
+    	if(!caseSelect.isEmpty())
+    		return caseSelect.getJeton().getSymbole();
     	return Character.MIN_VALUE;
     }
     

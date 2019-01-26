@@ -1,8 +1,6 @@
 package com.apo.puissance4.console;
 
 import java.util.Scanner;
-
-import com.apo.puissance4.GrilleJeu;
 import com.apo.puissance4.ManagerJeu;
 import com.apo.puissance4.exception.FullColumnException;
 import com.apo.puissance4.exception.KeyDoNotExistException;
