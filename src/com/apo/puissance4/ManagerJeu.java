@@ -90,6 +90,14 @@ public class ManagerJeu {
 	public String getNomJoueurCourrant() {
 		return _joueurCourrant.getNom();
 	}
+	
+	public char getSymboleJoueurCourrant() {
+		return _joueurCourrant.getSymbole();
+	}
+	
+	public Joueur getJoueur(int index) {
+		return _joueurs[index];
+	}
 
 	public void setNbJoueur(int nbJoueur) {
 		this._nbJoueur = nbJoueur;
@@ -105,7 +113,7 @@ public class ManagerJeu {
 		_indexJoueurCourrant = indexJoueur;
 		_joueurCourrant = _joueurs[indexJoueur];
 	}
-
+	
 	public void setConditionVictoire(int conditionVictoire) {
 		this._conditionVictoire = conditionVictoire;
 	}
@@ -156,7 +164,8 @@ public class ManagerJeu {
 	
 	public boolean partieFinie() {
 		boolean test = _grille.vérifVictoire(_joueurCourrant, _conditionVictoire);
-		setJoueurCourant(++_indexJoueurCourrant);
+		if(!test) 
+			setJoueurCourant(++_indexJoueurCourrant);
 		return test;
 	}
 	
