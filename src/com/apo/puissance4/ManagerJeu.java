@@ -152,11 +152,12 @@ public class ManagerJeu {
 		if(index == -1)
 			throw new KeyDoNotExistException();
 		_grille.ajouterJeton(index, _joueurCourrant.getJeton());
-		setJoueurCourant(++_indexJoueurCourrant);
 	}
 	
 	public boolean partieFinie() {
-		return _grille.vérifVictoire(_joueurCourrant, _conditionVictoire);
+		boolean test = _grille.vérifVictoire(_joueurCourrant, _conditionVictoire);
+		setJoueurCourant(++_indexJoueurCourrant);
+		return test;
 	}
 	
 	/**
