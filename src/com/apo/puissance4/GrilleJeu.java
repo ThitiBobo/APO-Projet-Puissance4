@@ -159,11 +159,11 @@ public class GrilleJeu
         // un boolean qui indique si on sort du while
         boolean flag = true;
         // si on ne va pas en dessous de 0
-        if(this._derniereColJetonPlacé + décalage <= this._nbLignes)
+        if(this._derniereColJetonPlacé + décalage < this._nbLignes)
         {
             // tant que la colonne du dernier jeton placé + le décalage à droite est supérieur ou égal à 0
             // et que le flag est positionné sur tue
-            while((this._derniereColJetonPlacé + décalage <= this._nbLignes) &&  (flag) )
+            while((this._derniereColJetonPlacé + décalage < this._nbLignes) &&  (flag) )
             {
                 // s'il y a bien un jeton sur l'endroit que l'on va checker
                 if(!this._grille[this._derniereColJetonPlacé+décalage].getCase(this._derniereLigneJetonPlacé).isEmpty())
@@ -407,11 +407,11 @@ public class GrilleJeu
        // un boolean qui indique si on sort du while
         boolean flag = true;
         // Si la dernière ligne décalée de i reste en dessous du nombre total de lignes et que la dernière colonne décalée de j reste en dessous du nombre total de colonnes
-        if( (this._derniereLigneJetonPlacé + décalage <= this._nbLignes)  && (this._derniereColJetonPlacé + décalage <= this._nbColonnes))
+        if( (this._derniereLigneJetonPlacé + décalage < this._nbLignes)  && (this._derniereColJetonPlacé + décalage < this._nbColonnes))
         {
             // tant que la dernière ligne décalée de i reste en dessous du nombre total de lignes et que la dernière colonne décalée de j reste en dessous du nombre total de colonnes
             // et que le flag est positionné sur tue
-            while((this._derniereLigneJetonPlacé + décalage <= this._nbLignes)  && (this._derniereColJetonPlacé + décalage <= this._nbColonnes) && (flag))
+            while((this._derniereLigneJetonPlacé + décalage < this._nbLignes)  && (this._derniereColJetonPlacé + décalage < this._nbColonnes) && (flag))
             {
                 // s'il y a bien un jeton sur l'endroit que l'on va checker
                 if(!this._grille[this._derniereColJetonPlacé + décalage].getCase(this._derniereLigneJetonPlacé + décalage).isEmpty())
@@ -507,11 +507,11 @@ public class GrilleJeu
        // un boolean qui indique si on sort du while
         boolean flag = true;
         // Si la dernière ligne décalée de i reste en dessous du nombre total de lignes et que la dernière colonne décalée de j reste en dessous du nombre total de colonnes
-        if( (this._derniereLigneJetonPlacé + décalage <= this._nbLignes)  && (this._derniereColJetonPlacé - décalage >= 0))
+        if( (this._derniereLigneJetonPlacé + décalage < this._nbLignes)  && (this._derniereColJetonPlacé - décalage >= 0))
         {
             // tant que la dernière ligne décalée de i reste en dessous du nombre total de lignes et que la dernière colonne décalée de j reste en dessous du nombre total de colonnes
             // et que le flag est positionné sur tue
-            while((this._derniereLigneJetonPlacé + décalage <= this._nbLignes)  && (this._derniereColJetonPlacé - décalage >= 0) && (flag))
+            while((this._derniereLigneJetonPlacé + décalage < this._nbLignes)  && (this._derniereColJetonPlacé - décalage >= 0) && (flag))
             {
                 // s'il y a bien un jeton sur l'endroit que l'on va checker
                 if(!this._grille[this._derniereColJetonPlacé - décalage].getCase(this._derniereLigneJetonPlacé + décalage).isEmpty())
@@ -557,11 +557,11 @@ public class GrilleJeu
        // un boolean qui indique si on sort du while
         boolean flag = true;
         // Si la dernière ligne décalée de i reste en dessous du nombre total de lignes et que la dernière colonne décalée de j reste en dessous du nombre total de colonnes
-        if( (this._derniereLigneJetonPlacé - décalage >= 0)  && (this._derniereColJetonPlacé + décalage <= this._nbColonnes))
+        if( (this._derniereLigneJetonPlacé - décalage >= 0)  && (this._derniereColJetonPlacé + décalage < this._nbColonnes))
         {
             // tant que la dernière ligne décalée de i reste en dessous du nombre total de lignes et que la dernière colonne décalée de j reste en dessous du nombre total de colonnes
             // et que le flag est positionné sur tue
-            while((this._derniereLigneJetonPlacé - décalage >= 0)  && (this._derniereColJetonPlacé + décalage <= this._nbColonnes) && (flag))
+            while((this._derniereLigneJetonPlacé - décalage >= 0)  && (this._derniereColJetonPlacé + décalage < this._nbColonnes) && (flag))
             {
                 // s'il y a bien un jeton sur l'endroit que l'on va checker
                 if(!this._grille[this._derniereColJetonPlacé + décalage].getCase(this._derniereLigneJetonPlacé - décalage).isEmpty())
