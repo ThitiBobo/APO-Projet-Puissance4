@@ -44,6 +44,17 @@ public class Joueur {
 		return _score;
 	}
 	
+	public String[] getTouches() {
+		return _toucheColonnes;
+	}
+	
+	public void setTouche(int nbTouches) {
+		_toucheColonnes = new String[nbTouches];
+		for (int i = 0; i < nbTouches; i++) {
+			_toucheColonnes[i] = String.valueOf(i + 1);
+		}
+	}
+	
 	public String getNom() {
 		return _nom;
 	}

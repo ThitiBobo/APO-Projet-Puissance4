@@ -7,6 +7,8 @@ import com.apo.puissance4.exception.FullColumnException;
  */
 public class GrilleJeu 
 {
+	private static int _nbColonnesDefaut = 7;
+	private static int _nbLignesDefaut = 6;
 
     //un tableau de colonnes : la grille
     private Colonne[] _grille;
@@ -19,6 +21,10 @@ public class GrilleJeu
     private int _derniereColJetonPlacé = 0;
     private int _derniereLigneJetonPlacé = 0;
         
+    public GrilleJeu() {
+    	this(_nbColonnesDefaut, _nbLignesDefaut);
+    }
+    
     /**
      * Constructeur de la grille de jeu
      * @param nbCol : le nombre de colonnes souhaité pour la partie
@@ -88,6 +94,12 @@ public class GrilleJeu
     public int getColonneDernierJetonPlacé()
     {
         return this._derniereColJetonPlacé;
+    }
+    
+    public char getSymbole(int colonne, int ligne) {
+    	if(_grille[colonne].getCase(ligne).getJeton() != null)
+    		return _grille[colonne].getCase(ligne).getJeton().getSymbole();
+    	return Character.MIN_VALUE;
     }
     
     /**

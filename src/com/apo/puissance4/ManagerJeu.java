@@ -1,6 +1,25 @@
 package com.apo.puissance4;
 
+import com.apo.puissance4.exception.FullColumnException;
+import com.apo.puissance4.exception.KeyDoNotExistException;
+
 public class ManagerJeu {
+	
+	// **********************************************
+	// 				Attributs statiques
+	// **********************************************
+	/**
+	 * nombre de joueur par défaut
+	 */
+	private static int _nbJoueursDefaut = 2;
+	/**
+	 * nombre de pion à aligner par défaut
+	 */
+	private static int _conditionVictoireDefaut = 4;
+	/**
+	 * nombre de partie par défaut;
+	 */
+	private static int _nbPartieDefaut = 1;
 	
 	// **********************************************
 	// 					Attributs
@@ -52,18 +71,6 @@ public class ManagerJeu {
 		return _indexJoueurCourrant;
 	}
 
-	public Joueur[] getJoueurs() {
-		return _joueurs;
-	}
-
-	public Joueur getJoueurCourrant() {
-		return _joueurCourrant;
-	}
-
-	public GrilleJeu getGrille() {
-		return _grille;
-	}
-
 	public int getConditionVictoire() {
 		return _conditionVictoire;
 	}
@@ -75,56 +82,108 @@ public class ManagerJeu {
 	public int getNbPartieRestante() {
 		return _nbPartieRestante;
 	}
-
-	public void setNbJoueur(int _nbJoueur) {
-		this._nbJoueur = _nbJoueur;
-	}
-
-	public void setIndexJoueurCourrant(int _indexJoueurCourrant) {
-		this._indexJoueurCourrant = _indexJoueurCourrant;
-	}
-
-	public void setJoueurs(Joueur[] _joueurs) {
-		this._joueurs = _joueurs;
-	}
-
-	public void setJoueurCourrant(Joueur _joueurCourrant) {
-		this._joueurCourrant = _joueurCourrant;
-	}
-
-	public void setGrille(GrilleJeu _grille) {
-		this._grille = _grille;
-	}
-
-	public void setConditionVictoire(int _conditionVictoire) {
-		this._conditionVictoire = _conditionVictoire;
-	}
-
-	public void setNbPartie(int _nbPartie) {
-		this._nbPartie = _nbPartie;
-	}
-
-	public void setNbPartieRestante(int _nbPartieRestante) {
-		this._nbPartieRestante = _nbPartieRestante;
+	
+	public int getNumPartie() {
+		return _nbPartie - _nbPartieRestante + 1;
 	}
 	
+	public String getNomJoueurCourrant() {
+		return _joueurCourrant.getNom();
+	}
+
+	public void setNbJoueur(int nbJoueur) {
+		this._nbJoueur = nbJoueur;
+		_joueurs = new Joueur[_nbJoueur];
+		for (int i = 0; i < _nbJoueur; i++) {
+			_joueurs[i] = new Joueur();
+			_joueurs[i].setTouche(_grille.getNbColonnes());
+		}
+	}
+	
+	public void setJoueurCourant(int indexJoueur) {
+		indexJoueur = indexJoueur % _nbJoueur;
+		_indexJoueurCourrant = indexJoueur;
+		_joueurCourrant = _joueurs[indexJoueur];
+	}
+
+	public void setConditionVictoire(int conditionVictoire) {
+		this._conditionVictoire = conditionVictoire;
+	}
+
+	public void setNbPartie(int nbPartie) {
+		this._nbPartie = nbPartie;
+		this._nbPartieRestante = nbPartie;
+	}
+	
+	// **********************************************
+	// 				  Constructeurs
+	// **********************************************
+	
+	/**
+	 * 
+	 */
+	public ManagerJeu() {
+		_grille = new GrilleJeu();
+		setNbJoueur(_nbJoueursDefaut);
+		setJoueurCourant(0);
+		setNbPartie(_nbPartieDefaut);
+		setConditionVictoire(_conditionVictoireDefaut);
+		_joueurs[0].setSymbole('X');
+		_joueurs[1].setSymbole('O');
+	}
+
 	
 	// **********************************************
 	// 					Méthodes
 	// **********************************************
 
 	/**
+	 * @throws FullColumnException 
+	 * @throws IllegalArgumentException 
 	 * 
 	 */
-	public void Jouer() {
-		
+	public void jouer(String touche) throws IllegalArgumentException, FullColumnException, KeyDoNotExistException {
+		String[] touches = _joueurCourrant.getTouches();
+		int index = -1;
+		for (int i = 0; i < touches.length; i++) {
+			if (touches[i].compareTo(touche) == 0)
+				index = i;
+		}
+		if(index == -1)
+			throw new KeyDoNotExistException();
+		_grille.ajouterJeton(index, _joueurCourrant.getJeton());
+		setJoueurCourant(++_indexJoueurCourrant);
+	}
+	
+	public boolean partieFinie() {
+		return _grille.vérifVictoire(_joueurCourrant, _conditionVictoire);
 	}
 	
 	/**
 	 * retourne le rendu graphique du jeur sous forme de String
 	 * @return
 	 */
-	public String affichageGrille() {
-		return null;
+	public String affichage() {
+		// affichage de la grille
+		String affichage = "";
+		for (int i = _grille.getNbLignes() - 1; i >= 0 ; i--) {
+			for (int j = 0; j < _grille.getNbColonnes(); j++) {
+				char symbole = _grille.getSymbole(j, i);
+				if (symbole == Character.MIN_VALUE)
+					affichage += "| - ";
+				else
+					affichage += "| " + symbole + " ";
+			}
+			affichage += "|\n";
+		}
+		// affichage des racourcis clavier du joueur courrant.
+		String[] touches = _joueurCourrant.getTouches();
+		affichage += "  ";
+		for (String touche : touches) {
+			affichage += touche + "   ";
+		}
+		affichage += "\n";
+		
+		return affichage;
 	}
 }
