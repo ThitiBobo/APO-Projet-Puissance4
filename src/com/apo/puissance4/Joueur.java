@@ -2,7 +2,7 @@ package com.apo.puissance4;
 
 /**
  * Permet de créer des instances représentant des juoeurs de puissance4,
- *  définit par un nom, un score, un symbole de pion, ect...
+ * définit par un nom, un score, un symbole de pion, ect...
  * @author Thibaut Delplanque 
  */
 public class Joueur {
@@ -36,35 +36,89 @@ public class Joueur {
 	// 				Getters Setters
 	// **********************************************
 	
+	/**
+	 * Obtient le symbole assigné au joueur 
+	 * @return retourne le symbole sous forme de caractère
+	 */
 	public char getSymbole() {
 		return _symbole;
 	}
-	
+	/**
+	 * Obtient le score de la partie courrante
+	 * @return retourne un entier
+	 */
 	public int getScore() {
 		return _score;
 	}
-	
+	/**
+	 * Obtient le score du joueur depuis le début
+	 * (score qu'il a cumulé durant toutes ses parties)
+	 * @return retourne un entier
+	 */
+	public int getScoreTotal() {
+		return _scoreTotal;
+	}
+	/**
+	 * Obtient le nom du joueur
+	 * @return retourne une chaine de caractère
+	 */
+	public String getNom() {
+		return _nom;
+	}
+	/**
+	 * Obtient une nouvelle instance de Jeton, au couleur
+	 * du joueur
+	 * @return retourne une instance de type Jeton
+	 */
+	public Jeton getJeton() {
+		return new Jeton(this,_symbole); 
+	}
+	/**
+	 * Obtient les racourcis claviers du joueur
+	 * @return retourne un tableau de String
+	 */
 	public String[] getTouches() {
 		return _toucheColonnes;
 	}
-	
+	/**
+	 * Modifie le symbole du joueur
+	 * @param nouveau symbole
+	 */
+	public void setSymbole(char symbole) {
+		_symbole = symbole;
+	}
+	/**
+	 * Modifie le score total du joueur
+	 * @param nouveau score total 
+	 */
+	public void setScoreTotal(int score) {
+		_scoreTotal = score; 
+	}
+	/**
+	 * Modifie le nom du joueur
+	 * @param nouveau blase du gamer
+	 */
+	public void setNom(String nom) {
+		_nom = nom;
+	}
+	/**
+	 * Permet d'initialisé les racourcis claviers du joueur
+	 * avec des valeurs allant de 1 à n cases
+	 * @param nbTouches, nombre de touche à assigner
+	 */
 	public void setTouche(int nbTouches) {
 		_toucheColonnes = new String[nbTouches];
 		for (int i = 0; i < nbTouches; i++) {
 			_toucheColonnes[i] = String.valueOf(i + 1);
 		}
 	}
-	
-	public String getNom() {
-		return _nom;
-	}
-	
-	public Jeton getJeton() {
-		return new Jeton(this,_symbole); 
-	}
-	
-	public void setSymbole(char symbole) {
-		_symbole = symbole;
+	/**
+	 * Modifie les racourcis claviers avec un tableau 
+	 * de String contenant les racourcis personnalisés
+	 * @param touches personnalisés
+	 */
+	public void setTouche(String[] touches) {
+		_toucheColonnes = touches;
 	}
 	
 	// **********************************************
@@ -84,25 +138,48 @@ public class Joueur {
 		this._nom = nom;
 		this._toucheColonnes = toucheColonnes;
 	}
-	
-	
-	public Joueur(int score, char symbole) {
-		_score = score;
-		setSymbole(symbole);
-	}
 
 	/**
+	 * Initialise une nouvelle instance de joueur avec un symbole 
 	 * @param _symbole
 	 */
 	public Joueur(char symbole) {
-		this(0, symbole);
+		_symbole = symbole;
 	}
 	
+	/**
+	 * Initialise une nouvelle instance vide de Joueur
+	 */
 	public Joueur() {}
 	
+	
+	// **********************************************
+	// 					Méthodes
+	// **********************************************
+	
+	/**
+	 * Rajoute des points au score du joueur
+	 * @param score à rajouter en plus
+	 */
 	public void addScore(int score) {
 		_score += score;
 	}
 	
+	/**
+	 * Permet de remettre à 0 le score du joueur sur la partie
+	 * en cours, le score de la partie est rajouté au score total
+	 * pour ne pas être perdu
+	 */
+	public void resetScore() {
+		saveScore();
+		_score = 0;
+	}
+	
+	/**
+	 * Rajoute le score de la partie au score total
+	 */
+	private void saveScore() {
+		_scoreTotal += _score;
+	}
 
 }
