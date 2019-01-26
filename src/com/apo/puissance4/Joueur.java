@@ -5,7 +5,7 @@ package com.apo.puissance4;
  * définit par un nom, un score, un symbole de pion, ect...
  * @author Thibaut Delplanque 
  */
-public class Joueur {
+public class Joueur implements Comparable<Joueur>{
 	
 	// **********************************************
 	// 					Attributs
@@ -180,6 +180,22 @@ public class Joueur {
 	 */
 	private void saveScore() {
 		_scoreTotal += _score;
+	}
+	
+	/**
+	 * Compare deux joueur entre eux grâce à leur score
+	 * @param arg0
+	 * @return
+	 */
+	@Override
+	public int compareTo(Joueur joueur) {
+		if (joueur.getScore() >= this.getScore())
+			if(joueur.getScore() > this.getScore())
+				return 1;
+			else
+			return 0;
+		else
+			return -1;	
 	}
 
 }
