@@ -1,5 +1,10 @@
 package com.apo.puissance4;
 
+import java.awt.List;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+
 import com.apo.puissance4.exception.FullColumnException;
 import com.apo.puissance4.exception.KeyDoNotExistException;
 
@@ -98,7 +103,15 @@ public class ManagerJeu {
 	public Joueur getJoueur(int index) {
 		return _joueurs[index];
 	}
-
+	
+	public GrilleJeu getGrille() {
+		return _grille;
+	}
+	
+	public void setGrille(int nbColonnes, int nbLignes) {
+		_grille = new GrilleJeu(nbColonnes, nbLignes);
+	}
+	
 	public void setNbJoueur(int nbJoueur) {
 		this._nbJoueur = nbJoueur;
 		_joueurs = new Joueur[_nbJoueur];
@@ -106,6 +119,7 @@ public class ManagerJeu {
 			_joueurs[i] = new Joueur();
 			_joueurs[i].setTouche(_grille.getNbColonnes());
 		}
+		setJoueurCourant(0);
 	}
 	
 	public void setJoueurCourant(int indexJoueur) {
@@ -167,6 +181,32 @@ public class ManagerJeu {
 		if(!test) 
 			setJoueurCourant(++_indexJoueurCourrant);
 		return test;
+	}
+	
+	public void nouvellePartie() {
+		_grille.resetGrille();
+		_nbPartieRestante--; 
+		_joueurCourrant.addScore(1);
+	}
+	
+	public String infoScore() {
+		
+		ArrayList<Joueur> classement = new ArrayList<Joueur>();
+		for (int i = 0; i < _joueurs.length; i++) {
+			classement.add(_joueurs[i]);
+		}
+		Collections.sort((java.util.List<Joueur>) classement);
+		
+		String infoScore = "";
+		infoScore += "Le Joueur " + classement.get(0).getNom() + " est le grand vainqueur !\n";
+		infoScore += "score :  " + classement.get(0).getScore() + " / " + this._nbPartie + "gagnée(s)\n";
+		infoScore += "----  classment ----\n";
+		for (int i = 0; i < classement.size(); i++) {
+			infoScore += " - " + i + " : " + classement.get(i).getNom() + " " 
+					+  classement.get(i).getScore() + " / " + this._nbPartie + "gagnée(s)\n";
+		}
+		return infoScore;
+		
 	}
 	
 	/**

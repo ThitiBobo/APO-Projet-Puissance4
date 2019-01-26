@@ -84,19 +84,18 @@ public class AffichageConsole {
 	}
 	
 	private static void partiePersonnalise() {
-		
+		saisieInfoPartie();
+		saisieInfoGrille();
+		saisieInfoJoueur();
+		jouer();
 	}
 	
-	private static void saisieNomJoueur() {
-		for (int i = 0; i < jeu.getNbJoueur(); i++) {
-			System.out.print("Entrée le nom du joueur n° "+ i + ": ");
-			String saisie = sc.nextLine();
-			jeu.getJoueur(i).setNom(saisie);
-		}
-		
-	}
+
 	
 	private static void jouer() {
+		System.out.println();
+		System.out.println("----  START  ----");
+		System.out.println();
 		boolean tourFinie;
 		//boucle pour les différentes parties à jouer
 		do {
@@ -130,18 +129,136 @@ public class AffichageConsole {
 				
 			}while(!jeu.partieFinie());
 			affichageVictoire();
+			jeu.nouvellePartie();
 			
-		}while(jeu.getNbPartieRestante() > 1);
+		}while(jeu.getNbPartieRestante() > 0);
+		
 		System.out.println();
 		System.out.println("----  Partie terminée  ----");
 		System.out.println();
+		scoreFinal();
 	}
 	
 	private static void affichageVictoire() {
 		System.out.println();
+		System.out.println("----  Manche terminée  ----");
+		System.out.println();
 		System.out.println("Le Joueur " + jeu.getNomJoueurCourrant() + " à gagné ");
 		System.out.println();
+	}
+	
+	private static void scoreFinal() {
+		System.out.println();
+		System.out.println("----  Score Final  ----");
+		System.out.println();
+		System.out.println(jeu.infoScore());
+		System.out.println();
+		System.out.println();
+	}
+	
+	private static void saisieInfoJoueur() {
+		saisieNombreJoueur();
+		for (int i = 0; i < jeu.getNbJoueur(); i++) {
+			System.out.print("Entrée le nom du joueur n° "+ (i + 1) + ": ");
+			String nom = sc.nextLine();
+			jeu.getJoueur(i).setNom(nom);
+			
+			System.out.print("Entrée le symbole pour "+ nom + " : ");
+			String saisie = sc.nextLine();
+			jeu.getJoueur(i).setSymbole(saisie.charAt(0));
+			
+			System.out.println("Paramètrage des racourcis claviers de " + nom + " : ");
+			String[] touches = new String[jeu.getGrille().getNbColonnes()];
+			for (int j = 0; j < jeu.getGrille().getNbColonnes(); j++) {
+				System.out.print("Entrée le symbole pour "+ nom + ", colonne " + (j + 1) + " : " );
+				saisie = sc.nextLine();
+				touches[j] = saisie;
+			}
+			jeu.getJoueur(i).setTouche(touches);
+		}
+	}
+	
+	private static void saisieNombreJoueur() {
+		boolean condition;
+		do {
+			condition = false;
+			System.out.print("Entrée le nombre de joueur : ");
+			String saisie = sc.nextLine();
+			try {
+				jeu.setNbJoueur(Integer.parseInt(saisie));
+			}catch(NumberFormatException e) {
+				System.out.println("j'ai dit un nombre !");
+				condition = true;
+			}
+		} while (condition);
+	}
+	
+	private static void saisieNomJoueur() {
+		for (int i = 0; i < jeu.getNbJoueur(); i++) {
+			System.out.print("Entrée le nom du joueur n° "+ i + ": ");
+			String saisie = sc.nextLine();
+			jeu.getJoueur(i).setNom(saisie);
+		}
 		
+	}
+	
+	private static void saisieInfoPartie() {
+		boolean condition;
+		do {
+			condition = false;
+			System.out.print("Entrée le nombre de partie : ");
+			String saisie = sc.nextLine();
+			try {
+				jeu.setNbPartie(Integer.parseInt(saisie));
+			}catch(NumberFormatException e) {
+				System.out.println("j'ai dit un nombre !");
+				condition = true;
+			}
+		} while (condition);
+		
+		do {
+			condition = false;
+			System.out.print("Entrée le nombre de pion à aligner pour gagner : ");
+			String saisie = sc.nextLine();
+			try {
+				jeu.setConditionVictoire(Integer.parseInt(saisie));
+			}catch(NumberFormatException e) {
+				System.out.println("j'ai dit un nombre !");
+				condition = true;
+			}
+		} while (condition);
+	}
+	
+	private static void saisieInfoGrille() {
+		boolean condition;
+		int nbLignes = 6;
+		int nbColonnes = 7;
+		
+		do {
+			condition = false;
+			System.out.print("Entrée le nombre de lignes : ");
+			String saisie = sc.nextLine();
+			try {
+				nbLignes = Integer.parseInt(saisie);
+			}catch(NumberFormatException e) {
+				System.out.println("j'ai dit un nombre !");
+				condition = true;
+			}
+		} while (condition);
+		
+		do {
+			condition = false;
+			System.out.print("Entrée le nombre de colonnes : ");
+			String saisie = sc.nextLine();
+			try {
+				nbColonnes = Integer.parseInt(saisie);
+			}catch(NumberFormatException e) {
+				System.out.println("j'ai dit un nombre !");
+				condition = true;
+			}
+		} while (condition);
+		
+		jeu.setGrille(nbLignes, nbColonnes);
 	}
 	
 }
