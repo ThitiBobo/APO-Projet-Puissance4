@@ -62,6 +62,7 @@ public class GrilleJeu
         this._derniereColJetonPlacé = indiceCol;
         this._derniereLigneJetonPlacé = this._grille[indiceCol].getIndexCaseVide();
         this._grille[indiceCol].ajouterJeton(j);
+        this._nbCasesVides--;
     }
 
     /**
@@ -601,5 +602,10 @@ public class GrilleJeu
         }
         // on retourne le nombre de jetons alignés en bas du jeton initial, sans compter ce dernier.
         return nbAlignés;
+    }
+    
+    private boolean isFull()
+    {
+        return this._nbCasesVides == 0;
     }
 }
