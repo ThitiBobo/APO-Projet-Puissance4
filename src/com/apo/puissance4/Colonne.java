@@ -77,7 +77,7 @@ public class Colonne {
 	 * @throws IllegalArgumentException est renvoy� si le jeton pass� en param�tre est null 
 	 */
 	public void ajouterJeton(Jeton jeton) throws IllegalArgumentException, FullColumnException {
-		if(_indexCaseVide > _tailleColonne )
+		if(_indexCaseVide >= _tailleColonne )
 			throw new FullColumnException();
 		try {
 			_colonne[_indexCaseVide].ajouterJeton(jeton);
