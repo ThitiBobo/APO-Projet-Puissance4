@@ -1,13 +1,16 @@
 package com.apo.puissance4;
 
-import java.awt.List;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 
 import com.apo.puissance4.exception.FullColumnException;
 import com.apo.puissance4.exception.KeyDoNotExistException;
 
+/**
+ * Représente une partie de puissance4, en gérant les joueurs, le nombre de
+ * parties et les conditions de victoire
+ *
+ */
 public class ManagerJeu {
 	
 	// **********************************************
@@ -233,7 +236,6 @@ public class ManagerJeu {
 			affichage += touche + "   ";
 		}
 		affichage += "\n";
-		
 		return affichage;
 	}
 }
