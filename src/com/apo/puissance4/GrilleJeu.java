@@ -9,6 +9,8 @@ public class GrilleJeu
 {
 	private static int _nbColonnesDefaut = 7;
 	private static int _nbLignesDefaut = 6;
+        
+        private static int _nbCasesVidesDefault = 7*6;
 
     //un tableau de colonnes : la grille
     private Colonne[] _grille;
@@ -16,6 +18,7 @@ public class GrilleJeu
     private int _nbColonnes;
     // nombre de lignes
     private int _nbLignes;
+    private int _nbCasesVides;
     
     /*****coordonnéees du dernier jeton placé****/
     private int _derniereColJetonPlacé = 0;
@@ -34,6 +37,7 @@ public class GrilleJeu
     {
         this._nbColonnes = nbCol;
         this._nbLignes = nbLignes;
+        this._nbCasesVides = nbCol*nbLignes;
         this.initGrille();
     }
 
@@ -101,6 +105,11 @@ public class GrilleJeu
     	if(!caseSelect.isEmpty())
     		return caseSelect.getJeton().getSymbole();
     	return Character.MIN_VALUE;
+    }
+    
+    public int getNbCasesVides()
+    {
+        return this._nbCasesVides;
     }
     
     /**
@@ -335,7 +344,7 @@ public class GrilleJeu
      */
     private boolean vérifDiagonales(Joueur joueur, int nbPionsAlignésPourVictoire)
     {
-        return (this.vérifDiagonales30degré(joueur, nbPionsAlignésPourVictoire) && this.vérifDiagonales60degrés(joueur, nbPionsAlignésPourVictoire));
+        return (this.vérifDiagonales30degré(joueur, nbPionsAlignésPourVictoire) || this.vérifDiagonales60degrés(joueur, nbPionsAlignésPourVictoire));
     }
     
     /**
