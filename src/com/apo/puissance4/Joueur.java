@@ -184,8 +184,8 @@ public class Joueur implements Comparable<Joueur>{
 	
 	/**
 	 * Compare deux joueur entre eux grâce à leur score
-         * @param joueur : le joueur à comparer
-	 * @return -1 ou 0
+	 * @param joueur, le joueur à comparé
+	 * @return -1 s'il est inférieur, 0 si égal, et 1 si supérieur
 	 */
 	@Override
 	public int compareTo(Joueur joueur) {

@@ -219,8 +219,10 @@ public class ManagerJeu {
 	 * Permet de placé un jeton à la case damandé, le paramètre touche en entrée
 	 * doit correspondre à un des racourcis clavier du joueur courrant. 
 	 * @param touche, string représentant un des racourcis du joueur courrant
-	 * @throws FullColumnException si la colonne choisie est pleinne, une exception de type FullColumnException est renvoyé 
-	 * @throws KeyDoNotExistException si la touche n'existe pas, une exception de type KeyDoNotExistException est renvoyé 
+	 * @throws FullColumnException , si la colonne choisie est pleinne, une exception de type FullColumnException est renvoyé 
+	 * @throws KeyDoNotExistException , si la touche n'existe pas, une exception de type KeyDoNotExistException est renvoyé
+	 * @throws IllegalArgumentException s'il y a un problème
+	 * 
 	 * 
 	 */
 	public void jouer(String touche) throws IllegalArgumentException, FullColumnException, KeyDoNotExistException {
