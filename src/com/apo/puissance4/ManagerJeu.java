@@ -70,51 +70,94 @@ public class ManagerJeu {
 	// **********************************************
 	// 				Getters Setters
 	// **********************************************
-	
+	/**
+	 * Obtient le nombre de joueurs dans la partie
+	 * @return le nombre de joueurs en int
+	 */
 	public int getNbJoueur() {
 		return _nbJoueur;
 	}
-
+	/**
+	 * Obtient l'index du joueur courant dans la partie
+	 * index compris entre 0 et nbJoueur - 1
+	 * @return l'index en int
+	 */
 	public int getIndexJoueurCourrant() {
 		return _indexJoueurCourrant;
 	}
-
+	/**
+	 * Obtient le nombre de piont à aligner pour 
+	 * gagner une manche
+	 * @return nombre d'alignement en int
+	 */
 	public int getConditionVictoire() {
 		return _conditionVictoire;
 	}
-
+	/**
+	 * Obtient le nombre de manche dans la partie
+	 * @return le nombre de manche
+	 */
 	public int getNbPartie() {
 		return _nbPartie;
 	}
-
+	/**
+	 * Obtient le nombre de manche restante à jouer
+	 * @return retourne un int qui est le nombre de manche restante
+	 */
 	public int getNbPartieRestante() {
 		return _nbPartieRestante;
 	}
-	
+	/**
+	 * Obtient le numéro de la manche en cours
+	 * numéro compris entre 1 et nbPartie
+	 * @return retourne un int
+	 */
 	public int getNumPartie() {
 		return _nbPartie - _nbPartieRestante + 1;
 	}
-	
+	/**
+	 * Obtient le nom du joueur courrant
+	 * @return retourne un string
+	 */
 	public String getNomJoueurCourrant() {
 		return _joueurCourrant.getNom();
 	}
-	
+	/**
+	 * Obtient le symbole du joueur courrant
+	 * @return retourne un char
+	 */
 	public char getSymboleJoueurCourrant() {
 		return _joueurCourrant.getSymbole();
 	}
-	
+	/**
+	 * Obtient le joueur à l'indice précisé, 
+	 * indice compris entre 0 et nbJoueurs - 1
+	 * @param index du joueur
+	 * @return retourne l'instance du joueur à l'indice demandé
+	 */
 	public Joueur getJoueur(int index) {
 		return _joueurs[index];
 	}
-	
+	/**
+	 * Obtient le grille de jeu de la partie
+	 * @return retourne une instance de GrilleJeu
+	 */
 	public GrilleJeu getGrille() {
 		return _grille;
 	}
-	
+	/**
+	 * Permet de créer une nouvelle grille de jeu avec 
+	 * une taille
+	 * @param nbColonnes, le nombre de colonnes
+	 * @param nbLignes, le nombrede lignes
+	 */
 	public void setGrille(int nbColonnes, int nbLignes) {
 		_grille = new GrilleJeu(nbColonnes, nbLignes);
 	}
-	
+	/**
+	 * Permet d'initialisé le nombre de joueur
+	 * @param nbJoueur, lenombre de joueur
+	 */
 	public void setNbJoueur(int nbJoueur) {
 		this._nbJoueur = nbJoueur;
 		_joueurs = new Joueur[_nbJoueur];
@@ -124,17 +167,26 @@ public class ManagerJeu {
 		}
 		setJoueurCourant(0);
 	}
-	
+	/**
+	 * Permet d'initialisé le numéro du joueur courrant
+	 * @param indexJoueur, numéro du joueur
+	 */
 	public void setJoueurCourant(int indexJoueur) {
 		indexJoueur = indexJoueur % _nbJoueur;
 		_indexJoueurCourrant = indexJoueur;
 		_joueurCourrant = _joueurs[indexJoueur];
 	}
-	
+	/**
+	 * Permet d'initialisé le nombre de pièces à aligner pour gagner
+	 * @param conditionVictoire, nombre de pièces à alignées
+	 */
 	public void setConditionVictoire(int conditionVictoire) {
 		this._conditionVictoire = conditionVictoire;
 	}
-
+	/**
+	 * Permet d'initialisé le nombre de manche à jouer
+	 * @param nbPartie, le nombre de manches
+	 */
 	public void setNbPartie(int nbPartie) {
 		this._nbPartie = nbPartie;
 		this._nbPartieRestante = nbPartie;
@@ -145,7 +197,8 @@ public class ManagerJeu {
 	// **********************************************
 	
 	/**
-	 * 
+	 * Initialise une nouvelle instance de ManagerJeu, représentant 
+	 * une partie de puissance4 classique, 2 joueurs, une grille de 6x7, ...
 	 */
 	public ManagerJeu() {
 		_grille = new GrilleJeu();
@@ -163,8 +216,11 @@ public class ManagerJeu {
 	// **********************************************
 
 	/**
-	 * @throws FullColumnException 
-	 * @throws IllegalArgumentException 
+	 * Permet de placé un jeton à la case damandé, le paramètre touche en entrée
+	 * doit correspondre à un des racourcis clavier du joueur courrant. 
+	 * @param touche, string représentant un des racourcis du joueur courrant
+	 * @throws si la colonne choisie est pleinne, une exception de type FullColumnException est renvoyé 
+	 * @throws si la touche n'existe pas, une exception de type KeyDoNotExistException est renvoyé 
 	 * 
 	 */
 	public void jouer(String touche) throws IllegalArgumentException, FullColumnException, KeyDoNotExistException {
@@ -178,7 +234,12 @@ public class ManagerJeu {
 			throw new KeyDoNotExistException();
 		_grille.ajouterJeton(index, _joueurCourrant.getJeton());
 	}
-	
+	/**
+	 * Vérifie si le joueur courrant à gagné la manche en cours,
+	 * s'il à gagné, le joueur courrant marque un point et on arrete de passé au joueur d'après
+	 * sinon le joueur courrant est incrémenté.
+	 * @return retourne true si la manche est gagné, sinon false
+	 */
 	public boolean partieFinie() {
 		boolean test = _grille.vérifVictoire(_joueurCourrant, _conditionVictoire);
 		if(!test) 
@@ -186,12 +247,18 @@ public class ManagerJeu {
 		return test;
 	}
 	
+	/**
+	 * Initialise une nouvelle manche
+	 */
 	public void nouvellePartie() {
 		_grille.resetGrille();
 		_nbPartieRestante--; 
 		_joueurCourrant.addScore(1);
 	}
-	
+	/**
+	 * Permet de récupéré le classement des joueurs sur la partie
+	 * @return retourne un string
+	 */
 	public String infoScore() {
 		
 		ArrayList<Joueur> classement = new ArrayList<Joueur>();
@@ -214,7 +281,7 @@ public class ManagerJeu {
 	
 	/**
 	 * retourne le rendu graphique du jeur sous forme de String
-	 * @return
+	 * @return retourne un string
 	 */
 	public String affichage() {
 		// affichage de la grille
