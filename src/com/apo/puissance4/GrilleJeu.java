@@ -24,6 +24,9 @@ public class GrilleJeu
     private int _derniereColJetonPlacé = 0;
     private int _derniereLigneJetonPlacé = 0;
         
+    /**
+     * constructeur par défaut
+     */
     public GrilleJeu() {
     	this(_nbColonnesDefaut, _nbLignesDefaut);
     }
