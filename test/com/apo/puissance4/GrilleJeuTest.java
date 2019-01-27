@@ -45,7 +45,7 @@ public class GrilleJeuTest
         Jeton j = new Jeton(joueur);
         instance.ajouterJeton(0, j);
         
-        assertEquals(instance.getColonneDernierJetonPlacé(), 0);
+        assertEquals(instance.getColonneDernierJetonPlace(), 0);
         assertEquals(instance.getNbLignes()*instance.getNbColonnes()-1, instance.getNbCasesVides());
         instance.resetGrille();
         assertEquals(instance.getNbCasesVides(), instance.getNbLignes()*instance.getNbColonnes());
@@ -64,7 +64,7 @@ public class GrilleJeuTest
         Jeton j = new Jeton(joueur);
         GrilleJeu instance = new GrilleJeu();
         instance.ajouterJeton(indiceCol, j);
-        assertEquals(instance.getColonneDernierJetonPlacé(), 0);
+        assertEquals(instance.getColonneDernierJetonPlace(), 0);
         assertEquals(instance.getNbCasesVides(), instance.getNbColonnes()*instance.getNbLignes() - 1);
     }
 
@@ -113,10 +113,10 @@ public class GrilleJeuTest
         Jeton j = new Jeton(joueur);
         instance.ajouterJeton(0, j);
         int expResult = 0;
-        int result = instance.getLigneDernierJetonPlacé();
+        int result = instance.getColonneDernierJetonPlace();
         assertEquals(expResult, result);
         instance.ajouterJeton(0, j);
-        assertEquals(1, instance.getLigneDernierJetonPlacé());
+        assertEquals(1, instance.getColonneDernierJetonPlace());
     }
 
     /**
@@ -132,10 +132,10 @@ public class GrilleJeuTest
         Jeton j = new Jeton(joueur);
         instance.ajouterJeton(4, j);
         int expResult = 4;
-        int result = instance.getColonneDernierJetonPlacé();
+        int result = instance.getColonneDernierJetonPlace();
         assertEquals(expResult, result);
         instance.ajouterJeton(1, j);
-        assertEquals(1, instance.getColonneDernierJetonPlacé());
+        assertEquals(1, instance.getColonneDernierJetonPlace());
     }
 
     /**
@@ -194,7 +194,7 @@ public class GrilleJeuTest
         Joueur joueur2 = new Joueur('O');
         Jeton j2 = new Jeton(joueur);
         boolean expResult = false;
-        boolean result = instance.vérifVictoire(joueur, nbPionsAlignésPourVictoire);
+        boolean result = instance.verifVictoire(joueur, nbPionsAlignésPourVictoire);
         assertEquals(expResult, result);
        
         instance.ajouterJeton(1, j);
@@ -202,10 +202,10 @@ public class GrilleJeuTest
         instance.ajouterJeton(1, j);
         instance.ajouterJeton(1, j);
 
-        assertEquals(true, instance.vérifVictoire(joueur, nbPionsAlignésPourVictoire));
+        assertEquals(true, instance.verifVictoire(joueur, nbPionsAlignésPourVictoire));
         
          GrilleJeu instance2 = new GrilleJeu();
-        assertEquals(false, instance2.vérifVictoire(joueur, nbPionsAlignésPourVictoire));
+        assertEquals(false, instance2.verifVictoire(joueur, nbPionsAlignésPourVictoire));
         
         // on pourrait également faire les tests avec toutes les autres directions, c'est ce qui serait rigoureux.
         // étant donné que les tests ont déjà été réalisés à la main(sans jUnit) on s'abstiendra d'effectuer l'ensemble des tests. (et défaut de temps)
