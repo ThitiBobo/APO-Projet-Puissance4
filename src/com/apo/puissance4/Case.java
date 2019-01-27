@@ -44,7 +44,7 @@ public class Case {
 	/**
 	 * Ajoute un jeton dans la case si celle-ci n'est pas déja
 	 * occupée par un autre jeton
-	 * @param le jeton à ajouter
+	 * @param jeton, le jeton à ajouter
 	 * @throws CaseNotEmptyException si la case est d�ja occup�
 	 * @throws IllegalArgumentException si le jeton n'est pas instanci�
 	 */
