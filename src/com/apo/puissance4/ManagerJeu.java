@@ -9,7 +9,7 @@ import com.apo.puissance4.exception.KeyDoNotExistException;
 /**
  * Représente une partie de puissance4, en gérant les joueurs, le nombre de
  * parties et les conditions de victoire
- *
+ * @author Thibaud DELPLANQUE, Akram BOUQSIMI, Dorian NAAJI
  */
 public class ManagerJeu {
 	

@@ -2,15 +2,19 @@ package com.apo.puissance4;
 
 import com.apo.puissance4.exception.FullColumnException;
 
+
 /**
- * Grille gérant le jeu
+ * classe gérant la grille de jeu
+ * @author Dorian
  */
 public class GrilleJeu 
 {
+        //Le nombre de colonnes par défaut
 	private static int _nbColonnesDefaut = 7;
+        // Le nombre de lignes par défaut
 	private static int _nbLignesDefaut = 6;
-        
-        private static int _nbCasesVidesDefault = 7*6;
+        // Le nombre de cases vides par défaut
+        private static int _nbCasesVidesDefaut = 7*6;
 
     //un tableau de colonnes : la grille
     private Colonne[] _grille;
@@ -18,10 +22,13 @@ public class GrilleJeu
     private int _nbColonnes;
     // nombre de lignes
     private int _nbLignes;
+    // nombre de cases vides
     private int _nbCasesVides;
     
     /*****coordonnéees du dernier jeton placé****/
+    // colonne du dernier jeton placé
     private int _derniereColJetonPlace = 0;
+    // ligne du dernier jeton placé
     private int _derniereLigneJetonPlace = 0;
         
     /**
@@ -38,19 +45,24 @@ public class GrilleJeu
      */
     public GrilleJeu(int nbCol, int nbLignes)
     {
+        // initialisation des attributs
         this._nbColonnes = nbCol;
         this._nbLignes = nbLignes;
         this._nbCasesVides = nbCol*nbLignes;
         this.initGrille();
     }
     
+    /**
+     * Réinitialise la grille de jeu.
+     */
     public void resetGrille() {
     	this.initGrille();
         this._nbCasesVides = this._nbColonnes*this._nbLignes;
     }
 
     /**
-     * Initialise le tableau de colonnes. Méthode appelée par le constructeur.
+     * Initialise le tableau de colonnes. 
+     * Méthode appelée par le constructeur.
      */
     private void initGrille()
     {
@@ -64,16 +76,19 @@ public class GrilleJeu
     /**
      * Récupère les coordonnées de la case où le jeton va être placé
      * et ajoute un jeton
-     * @param j, jeton à placé
+     * @param j, jeton à placer
      * @param indiceCol, indice de la colonne
      * @throws IllegalArgumentException exception
      * @throws FullColumnException exception
      */
     public void ajouterJeton(int indiceCol, Jeton j) throws IllegalArgumentException, FullColumnException
     {
+        // on récupère l'emplacement du dernier jeton placé
         this._derniereColJetonPlace = indiceCol;
         this._derniereLigneJetonPlace = this._grille[indiceCol].getIndexCaseVide();
+        // on ajoute un jeton dans la colonne correspondante
         this._grille[indiceCol].ajouterJeton(j);
+        // on décrémente le nombre de cases vides
         this._nbCasesVides--;
     }
 
@@ -120,6 +135,10 @@ public class GrilleJeu
     	return Character.MIN_VALUE;
     }
     
+    /**
+     * 
+     * @return le nombre de cases vides
+     */
     public int getNbCasesVides()
     {
         return this._nbCasesVides;
@@ -616,6 +635,10 @@ public class GrilleJeu
         return nbAlignes;
     }
     
+    /**
+     * 
+     * @return vrai si la grille est pleine
+     */
     public boolean isFull()
     {
         return this._nbCasesVides == 0;

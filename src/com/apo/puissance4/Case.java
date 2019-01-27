@@ -3,9 +3,9 @@ package com.apo.puissance4;
 import com.apo.puissance4.exception.CaseNotEmptyException;
 
 /**
- * Représente des instances de case de grille de puissance4,
+ * Représente des instances de cases de grille de puissance4,
  * pouvant contenir ou non un Jeton 
- * @author Thibaut Delplanque, Akram Bouqisimi, Dorian Nadjiii
+ * @author Thibaud DELPLANQUE, Akram BOUQSIMI, Dorian NAAJI
  *
  */
 public class Case {
@@ -14,7 +14,7 @@ public class Case {
 	// 					Attributs
 	// **********************************************
 	/**
-	 * Jeton contenue (ou non) dans la case 
+	 * Jeton contenu (ou non) dans la case 
 	 */
 	private Jeton _jeton;
 	

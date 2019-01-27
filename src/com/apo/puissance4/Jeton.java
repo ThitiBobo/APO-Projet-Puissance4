@@ -3,7 +3,7 @@ package com.apo.puissance4;
 /**
  * Repésente des instance de Jeton de puissance4
  * avec un symbole et un joueur a titré
- * @author Thibaut Delplanque, Akram Bouqisimi, Dorian Nadjiii
+ * @author Thibaud DELPLANQUE, Akram BOUQSIMI, Dorian NAAJI
  *
  */
 public class Jeton {
