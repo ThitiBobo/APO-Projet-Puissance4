@@ -612,7 +612,7 @@ public class GrilleJeu
         return nbAlignés;
     }
     
-    private boolean isFull()
+    public boolean isFull()
     {
         return this._nbCasesVides == 0;
     }

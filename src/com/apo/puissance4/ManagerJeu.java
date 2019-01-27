@@ -241,7 +241,7 @@ public class ManagerJeu {
 	 * @return retourne true si la manche est gagné, sinon false
 	 */
 	public boolean partieFinie() {
-		boolean test = _grille.vérifVictoire(_joueurCourrant, _conditionVictoire);
+		boolean test = _grille.vérifVictoire(_joueurCourrant, _conditionVictoire) || _grille.isFull();
 		if(!test) 
 			setJoueurCourant(++_indexJoueurCourrant);
 		return test;
