@@ -46,6 +46,7 @@ public class GrilleJeu
     
     public void resetGrille() {
     	this.initGrille();
+        this._nbCasesVides = this._nbColonnes*this._nbLignes;
     }
 
     /**
