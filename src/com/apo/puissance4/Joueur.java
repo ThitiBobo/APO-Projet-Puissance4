@@ -3,7 +3,7 @@ package com.apo.puissance4;
 /**
  * Permet de créer des instances représentant des juoeurs de puissance4,
  * définit par un nom, un score, un symbole de pion, ect...
- * @author Thibaut Delplanque 
+ * @author Thibaud DELPLANQUE, Akram BOUQSIMI, Dorian NAAJI
  */
 public class Joueur implements Comparable<Joueur>{
 	
@@ -15,11 +15,11 @@ public class Joueur implements Comparable<Joueur>{
 	 */
 	private char _symbole;
 	/**
-	 * enregistre le score de la partie courrante
+	 * enregistre le score de la partie courante
 	 */
 	private int _score;
 	/**
-	 * permet d'enregistrer le nombre de partie gagner depuis le début
+	 * permet d'enregistrer le nombre de parties gagnées depuis le début
 	 */
 	private int _scoreTotal;
 	/**
@@ -27,7 +27,7 @@ public class Joueur implements Comparable<Joueur>{
 	 */
 	private String _nom;
 	/**
-	 * tableau représentant les saisie que doit faire le joueur pour jouer dans
+	 * tableau représentant les saisies que doit faire le joueur pour jouer dans
 	 * telle colonne, l'indice de la colonne est retrouvé avec l'indice du tableau
 	 */
 	private String[] _toucheColonnes;
@@ -44,7 +44,7 @@ public class Joueur implements Comparable<Joueur>{
 		return _symbole;
 	}
 	/**
-	 * Obtient le score de la partie courrante
+	 * Obtient le score de la partie courante
 	 * @return retourne un entier
 	 */
 	public int getScore() {
@@ -96,7 +96,7 @@ public class Joueur implements Comparable<Joueur>{
 	}
 	/**
 	 * Modifie le nom du joueur
-	 * @param nom, nouveau blase du gamer
+	 * @param nom le nom du joueur
 	 */
 	public void setNom(String nom) {
 		_nom = nom;
@@ -126,11 +126,11 @@ public class Joueur implements Comparable<Joueur>{
 	// **********************************************
 
 	/**
-	 * Instancie une nouvelle instance de Joueur avec tout les paramètres
-	 * @param symbole, le symbole des jetons du joueur
-	 * @param scoreTotal, le nombre de partie gagnée depuis le début
-	 * @param nom, son nom
-	 * @param toucheColonnes, les saisie racourcis clavier du joueur 
+	 * Instancie une nouvelle instance de Joueur avec tous les paramètres
+	 * @param symbole le symbole des jetons du joueur
+	 * @param scoreTotal le nombre de partie gagnée depuis le début
+	 * @param nom son nom
+	 * @param toucheColonnes les saisie racourcis clavier du joueur 
 	 */
 	public Joueur(String nom, char symbole, int scoreTotal, String[] toucheColonnes) {
 		this._symbole = symbole;
