@@ -10,7 +10,7 @@ public class GrilleJeu
 	private static int _nbColonnesDefaut = 7;
 	private static int _nbLignesDefaut = 6;
         
-        private static int _nbCasesVidesDefault = 7*6;
+    private static int _nbCasesVidesDefault = 7*6;
 
     //un tableau de colonnes : la grille
     private Colonne[] _grille;
@@ -273,7 +273,7 @@ public class GrilleJeu
     /**
      * Vérifie si "nbPionsAlignésPourVictoire" sont alignés verticalement
      * @param joueur : le joueur pour lequel on effectue la vérification
-     * @param nbPionsAlignésPourVictoire : le nombre de pions alignés nécessaire pour gagner
+     * @param nbPionsAlignesPourVictoire : le nombre de pions alignés nécessaire pour gagner
      * @return : true (victoire) ou false
      */
     private boolean verifVerticale(Joueur joueur, int nbPionsAlignesPourVictoire)
@@ -350,7 +350,7 @@ public class GrilleJeu
 
     
     /**
-     * Vérifie si "nbPionsAlignésPourVictoire" sont alignés diagonalement (30° et 60° haut & bas)
+     * Vérifie si nbPionsAlignésPourVictoire sont alignés diagonalement (30° et 60° haut et bas)
      * @param joueur : le joueur pour lequel on effectue la vérification
      * @param nbPionsAlignesPourVictoire : le nombre de pions alignés nécessaire pour gagner
      * @return : true (victoire) ou false
@@ -363,7 +363,7 @@ public class GrilleJeu
     /**
      * Vérifie si "nbPionsAlignésPourVictoire" sont alignés diagonalement (30°)
      * @param joueur : le joueur pour lequel on effectue la vérification
-     * @param nbPionsAlignésPourVictoire : le nombre de pions alignés nécessaire pour gagner
+     * @param nbPionsAlignesPourVictoire : le nombre de pions alignés nécessaire pour gagner
      * @return : true (victoire) ou false
      */
     private boolean verifDiagonales30degre(Joueur joueur, int nbPionsAlignesPourVictoire)
@@ -391,7 +391,7 @@ public class GrilleJeu
     /**
      * Vérifie si "nbPionsAlignésPourVictoire" sont alignés diagonalement (60°)
      * @param joueur : le joueur pour lequel on effectue la vérification
-     * @param nbPionsAlignésPourVictoire : le nombre de pions alignés nécessaire pour gagner
+     * @param nbPionsAlignesPourVictoire : le nombre de pions alignés nécessaire pour gagner
      * @return : true (victoire) ou false
      */
     private boolean verifDiagonales60degres(Joueur joueur, int nbPionsAlignesPourVictoire)
