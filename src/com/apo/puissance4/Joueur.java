@@ -82,21 +82,21 @@ public class Joueur implements Comparable<Joueur>{
 	}
 	/**
 	 * Modifie le symbole du joueur
-	 * @param nouveau symbole
+	 * @param symbole le nouveau symbole
 	 */
 	public void setSymbole(char symbole) {
 		_symbole = symbole;
 	}
 	/**
 	 * Modifie le score total du joueur
-	 * @param nouveau score total 
+	 * @param score le score total 
 	 */
 	public void setScoreTotal(int score) {
 		_scoreTotal = score; 
 	}
 	/**
 	 * Modifie le nom du joueur
-	 * @param nouveau blase du gamer
+	 * @param nom le nom du joueur
 	 */
 	public void setNom(String nom) {
 		_nom = nom;
@@ -130,7 +130,7 @@ public class Joueur implements Comparable<Joueur>{
 	 * @param symbole le symbole des jetons du joueur
 	 * @param scoreTotal le nombre de partie gagnée depuis le début
 	 * @param nom son nom
-	 * @param touchesColonnes les saisie racourcis clavier du joueur 
+	 * @param toucheColonnes les saisie racourcis clavier du joueur 
 	 */
 	public Joueur(String nom, char symbole, int scoreTotal, String[] toucheColonnes) {
 		this._symbole = symbole;
@@ -141,7 +141,7 @@ public class Joueur implements Comparable<Joueur>{
 
 	/**
 	 * Initialise une nouvelle instance de joueur avec un symbole 
-	 * @param _symbole le symbole du joueur
+	 * @param symbole le symbole du joueur
 	 */
 	public Joueur(char symbole) {
 		_symbole = symbole;
@@ -184,8 +184,8 @@ public class Joueur implements Comparable<Joueur>{
 	
 	/**
 	 * Compare deux joueur entre eux grâce à leur score
-	 * @param arg0
-	 * @return
+         * @param joueur : le joueur à comparer
+	 * @return -1 ou 0
 	 */
 	@Override
 	public int compareTo(Joueur joueur) {
