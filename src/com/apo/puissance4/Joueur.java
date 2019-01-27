@@ -82,14 +82,14 @@ public class Joueur implements Comparable<Joueur>{
 	}
 	/**
 	 * Modifie le symbole du joueur
-	 * @param symbole le nouveau symbole
+	 * @param symbole, nouveau symbole
 	 */
 	public void setSymbole(char symbole) {
 		_symbole = symbole;
 	}
 	/**
 	 * Modifie le score total du joueur
-	 * @param score le score total 
+	 * @param score, nouveau score total 
 	 */
 	public void setScoreTotal(int score) {
 		_scoreTotal = score; 
@@ -141,7 +141,7 @@ public class Joueur implements Comparable<Joueur>{
 
 	/**
 	 * Initialise une nouvelle instance de joueur avec un symbole 
-	 * @param symbole le symbole du joueur
+	 * @param symbole, le symbole du joueur
 	 */
 	public Joueur(char symbole) {
 		_symbole = symbole;

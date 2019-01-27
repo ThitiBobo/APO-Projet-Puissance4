@@ -40,14 +40,14 @@ public class Jeton {
 	}
 	/**
 	 * Permet de modifier le symbole du jeton
-	 * @param symbole nouveau symbole
+	 * @param symbole, le nouveau symbole
 	 */
 	public void setSymbole(char symbole) {
 		this._symbole = symbole;
 	}
 	/**
 	 * Permet de changer le propriétaire du jeton
-	 * @param joueur le nouveau joueur propriétaire
+	 * @param joueur, le nouveau joueur propriétaire
 	 */
 	public void setJoueur(Joueur joueur) {
 		this._joueur = joueur;
