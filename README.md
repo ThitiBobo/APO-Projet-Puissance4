@@ -1,24 +1,24 @@
 # APO-Projet-Puissance4
-Réalisation d'un puissance 4 en tp d'APO à Poytech Lyon
+Developing a JAVA program allowing to play the connect 4 game. Project made at Polytech Lyon
 
-# Membres du projet :
+# Project Members :
   * DELPLANQUE Thibaut
   * BOUQSIMI Akram
   * NAAJI Dorian
 
-# Modalités du projet
+# Project purposes
 
-## Réalisation d'un rapport
-*Rapport détaillant la méthodologie de travail, la répartition des tâches et l'évaluation du temps passé par chacun des collaborateurs.*
+## Writing a project report
+*Report describing the project methodology, distribution of workload and tasks, amout of time spent developing the project for each member*
 
 ## Conception
-*Conception UML*
+*UML conception*
 
 ## Code
-*Développement en JAVA*
+*JAVA Development*
 
 ## Documentation
-*Documentation & javadoc*
+*Doc & javadoc*
 
-## Réalisation d'extensions
-*Réalisation de différentes extensions*
+## Bonus features
+*Several extension modules*
