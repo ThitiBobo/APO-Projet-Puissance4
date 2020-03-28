@@ -1,2 +1,3 @@
 # ignoring html in github code percentages
 Puissance4 JavaDoc/* linguist-documentation
+*.html linguist-detectable=false
